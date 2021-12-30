@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 export default function TextForm(props) {
   const [text, setText] = useState("");
+  const [textColor, setTextColor] = useState("grey");
+
   const upCase = () => {
     setText(text.toUpperCase());
   };
@@ -9,6 +11,15 @@ export default function TextForm(props) {
   const loCase = () => {
     setText(text.toLowerCase());
   };
+
+  const clrText = () => {
+    let newTxt = '';
+    setText(newTxt);
+  }
+
+  const chngColor = () => {
+    setTextColor("purple");
+  }
 
   const textChange = (event) => {
     setText(event.target.value);
@@ -21,6 +32,7 @@ export default function TextForm(props) {
         <textarea
           className="form-control"
           value={text}
+          style={{color:textColor}}
           onChange={textChange}
           id="myBox"
           rows="8"
@@ -31,8 +43,14 @@ export default function TextForm(props) {
         <button className="btn btn-primary btn-sm me-3" onClick={upCase}>
           Convert to Uppercase
         </button>
-        <button className="btn btn-primary btn-sm" onClick={loCase}>
+        <button className="btn btn-primary btn-sm me-3" onClick={loCase}>
           Convert to Lowercase
+        </button>
+        <button className="btn btn-primary btn-sm me-3" onClick={clrText}>
+          Clear Text
+        </button>
+        <button className="btn btn-primary btn-sm" onClick={chngColor}>
+          Change color
         </button>
       </div>
       <div className="container mt-4">
